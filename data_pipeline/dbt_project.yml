@@ -1,0 +1,23 @@
+name: 'data_pipeline'
+version: '1.0.0'
+profile: 'data_pipeline'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  data_pipeline:
+    staging:
+      +materialized: view
+      databricks_warehouse: Serverless Starter Warehouse
+    marts:
+      +materialized: table
+      databricks_warehouse: Serverless Starter Warehouse
